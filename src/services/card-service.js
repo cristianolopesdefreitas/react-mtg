@@ -1,11 +1,13 @@
-import axios from 'axios';
+import Service from './service';
 
 const API = 'https://api.magicthegathering.io/v1/cards';
 
-class CardService {
+class CardService extends Service {
 	getCards(pageSize, page) {
-		return axios
-			.get(`${API}?pageSize=${pageSize}&page=${page}`);
+		return this.get(API, {
+			page: page,
+			pageSize: pageSize
+		});
 	}
 }
 
